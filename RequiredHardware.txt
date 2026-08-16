@@ -1,0 +1,58 @@
+================================================================================
+ TRIAGE MACHINE — REQUIRED HARDWARE
+ DSA Final Project | By Umar Khan (9611) & Huzaifa Masood (9331)
+================================================================================
+
+1. Arduino Nano                            x1
+   - Main microcontroller running the triage logic
+   - Any ATmega328P-based Nano clone works
+
+2. I2C 20x4 LCD Display                    x1
+   - Default I2C address: 0x27 (some modules use 0x3F)
+   - Connected via SDA/SCL (I2C bus)
+
+3. 4x4 Matrix Keypad                       x1
+   - Used for entering MR numbers and selecting triage levels
+   - Row pins  -> Arduino pins 3, 4, 5, 6
+   - Column pins -> Arduino pins 7, 8, 9, 10
+
+4. LEDs (5mm, standard)                    x4
+   - 1x Red    -> Arduino pin A0   (RED / Critical queue indicator)
+   - 1x Yellow -> Arduino pin A1   (YELLOW / Urgent queue indicator)
+   - 1x Green  -> Arduino pin A2   (GREEN / Minor queue indicator)
+   - 1x White/Any -> Arduino pin A3 (DEAD queue indicator)
+
+5. 220 Ohm Resistors                       x4
+   - One per LED, wired in series to limit current
+
+6. Buzzer (5V, active or passive)          x1
+   - Connected to Arduino pin 2
+   - Used for audible feedback on every action
+
+7. Breadboard (full-size, 830 tie-points)  x1
+   - For prototyping and mounting components
+
+8. Jumper Wires (Male-Male / Male-Female)  ~30
+   - For all component-to-Arduino connections
+
+9. USB Cable (Mini/Micro-USB, per board)   x1
+   - For programming and powering the Arduino Nano
+
+10. 5V Power Supply / Power Bank           x1 (optional)
+    - For standalone operation once deployed outside the breadboard
+
+--------------------------------------------------------------------------------
+ SOFTWARE / LIBRARIES REQUIRED
+--------------------------------------------------------------------------------
+ - Arduino IDE (or PlatformIO)
+ - LiquidCrystal_I2C library
+ - Keypad library
+
+--------------------------------------------------------------------------------
+ NOTES
+--------------------------------------------------------------------------------
+ - Confirm your LCD's I2C address using an I2C scanner sketch before wiring;
+   change the address in TriageMachine.ino if it is not 0x27.
+ - The DEAD LED wiring may be active-LOW on some builds — see the
+   DEAD_LED_ACTIVE_LOW flag in TriageMachine.ino if its behavior is inverted.
+================================================================================
